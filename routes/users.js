@@ -88,8 +88,10 @@ passport.use(new LocalStrategy(
 
 // https://github.com/Automattic/mongoose/issues/548#issuecomment-2245903
 // http://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
+// after user login, passport need to serialize user instance to token
+// store it into the browser cookie for keeping user in login state
 passport.serializeUser(function(user, done) {
-	console.log(user.id)
+	console.log(user)
   done(null, user.id);
 });
 
